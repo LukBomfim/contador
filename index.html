@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        html{
+            height: 100%;
+            box-sizing: border-box;
+        }
+        body{
+            background: linear-gradient(320deg, #00e7ad, #b3ff80, #9f98ff);
+            font: normal 20pt Arial;
+            text-align: center;
+        }
+        section{
+            background-color: rgba(255, 255, 255, 0.6);
+            text-align: left;
+            font: normal 17pt Arial;
+            padding: 20px;
+            width: 350px;
+            margin: auto;
+            border-radius: 35px;
+            line-height: 45px;
+        }
+        #selecNum{
+            font: bold 17pt arial;
+            line-height: 40px;
+        }
+        .Num{
+            width: 80px;
+            border-radius: 5px;
+            font-size: 20px;
+            border: 1px solid black;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .botaoMais{
+            font: normal 12pt Arial;
+            height: 22pt;
+            border-radius: 10px;
+            border: 1px solid blue;
+            color: blue;
+            background-color: rgba(255, 255, 255, 0.4);
+            transition: 0.2s;
+        } 
+        .botaoMais:hover{
+            color: white;
+            background-color: blue;
+            transition: 0.2s;
+        }
+        .botaoMais:active{
+            background-color: #00e7ad;
+            border: 1px solid #00e7ad;
+            transition: 0s;
+        }
+        #areaBotoes{
+            text-align: center;
+            padding-top: 20px;
+        }
+        #botaoContar{
+            font: normal 20pt Arial;
+            width: 190px;
+            border-radius: 10px;
+            border: 1px solid darkblue;
+            color: darkblue;
+            background-color: rgba(255, 255, 255, 0.4);
+            transition: 0.2s;
+        }
+        #botaoContar:hover{
+            color: white;
+            background-color: darkblue;
+            transition: 0.2s;
+        }
+        #botaoContar:active{
+            background-color: rgb(0, 0, 235);
+            border: 1px solid rgb(0, 0, 235);
+            transition: 0s;
+        }
+        #botaoLimpar{
+            font: normal 15pt Arial;
+            border-radius: 10px;
+            border: 1px solid red;
+            background-color: rgba(255, 255, 255, 0.4);
+            padding: 3px;
+            transition: 0.2s;
+        }
+        #botaoLimpar:hover{
+            background-color: red;
+            transition: 0.2s;
+        }
+        #botaoLimpar:active{
+            background-color: rgb(204, 0, 0);
+            transition: 0s;
+        }
+        #resultado{
+            padding-top: 20px;
+            font: normal 14pt Arial;
+        }
+
+        footer{
+            font: normal 15pt Arial;
+            line-height: 50px;
+        }
+        a{
+            color: black;
+            font-style: italic;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Contagem</h1>
+    </header>
+
+    <section>
+        <div id="selecNum">
+            <div id="areaInicio">
+                Início: <input type="number" class="Num" name="inicio" id="inicio"> 
+                <button class="botaoMais" onclick="mais1inicio()">+1</button> 
+                <button class="botaoMais" onclick="mais10inicio()">+10</button> 
+                <button class="botaoMais" onclick="mais100inicio()">+100</button>
+            </div>
+            <div id="areaFim">
+                Fim: <input type="number" class="Num" name="fim" id="fim">
+                <button class="botaoMais" onclick="mais1fim()">+1</button> 
+                <button class="botaoMais" onclick="mais10fim()">+10</button> 
+                <button class="botaoMais" onclick="mais100fim()">+100</button>
+            </div>
+            <div id="areaPasso">
+                Passo: <input type="number" class="Num" name="passo" id="passo" value="1">
+                <button class="botaoMais" onclick="mais1passo()">+1</button> 
+                <button class="botaoMais" onclick="mais10passo()">+10</button> 
+                <button class="botaoMais" onclick="mais100passo()">+100</button>
+            </div>
+        </div>
+        <div id="areaBotoes">
+            <button id="botaoContar" onclick="contar()">Contar</button> 
+            <button id="botaoLimpar" onclick="limpar()">🗑️</button>
+        </div>
+        <div id="resultado">
+            
+        </div>
+    </section>
+
+    <footer>
+        &copy; 
+        <a href="https://www.instagram.com/luk.bf/" target="_blank">
+            luk.bf
+        </a>
+    </footer>
+
+    <script>
+        var iniciotxt = document.getElementById('inicio')
+        var fimtxt = document.getElementById('fim')
+        var passotxt = document.getElementById('passo')
+        var inicio = Number(iniciotxt.value)
+        var fim = Number(fimtxt.value)
+        var passo = Number(passotxt.value)
+        var resultado = document.getElementById('resultado')
+
+        // BOTÕES PARA ADICIONAR
+
+            // MAIS INICIO
+        function mais1inicio(){
+            iniciotxt = document.getElementById('inicio')
+            iniciotxt.value = Number(iniciotxt.value) + 1
+        }
+        function mais10inicio(){
+            iniciotxt = document.getElementById('inicio')
+            iniciotxt.value = Number(iniciotxt.value) + 10
+        }
+        function mais100inicio(){
+            iniciotxt = document.getElementById('inicio')
+            iniciotxt.value = Number(iniciotxt.value) + 100
+        }
+
+            // MAIS FIM
+        function mais1fim(){
+            fimtxt = document.getElementById('fim')
+            fimtxt.value = Number(fimtxt.value) + 1
+        }
+        function mais10fim(){
+            fimtxt = document.getElementById('fim')
+            fimtxt.value = Number(fimtxt.value) + 10
+        }
+        function mais100fim(){
+            fimtxt = document.getElementById('fim')
+            fimtxt.value = Number(fimtxt.value) + 100
+        }
+
+            // MAIS PASSO
+        function mais1passo(){
+            passotxt = document.getElementById('passo')
+            passotxt.value = Number(passotxt.value) + 1
+        }
+        function mais10passo(){
+            passotxt = document.getElementById('passo')
+            passotxt.value = Number(passotxt.value) + 10
+        }
+        function mais100passo(){
+            passotxt = document.getElementById('passo')
+            passotxt.value = Number(passotxt.value) + 100
+        }
+
+
+        function contar(){
+            var inicio = Number(iniciotxt.value)
+            var fim = Number(fimtxt.value)
+            var passo = Number(passotxt.value)
+            resultado.innerHTML = ''
+
+            if (fim <= inicio){
+                resultado.style.color = 'red'
+                resultado.innerHTML = '*O fim deve ser maior que o começo*'
+            } else if (passo > (fim - inicio)){
+                resultado.style.color = 'red'
+                resultado.innerHTML = '*O intervalo de passo não deve ser maior que a diferença entre o início e o fim*'
+            } else if (passo <= 0){
+                resultado.style.color = 'red'
+                resultado.innerHTML = '*O passo não pode ser menor que 1*'
+            } else{
+                for (var c = inicio; c <= fim; c += passo)
+                if ((c + passo) <= fim){
+                    resultado.innerHTML += c + ' 👉 '
+                } else{
+                    resultado.innerHTML += c
+                }
+                resultado.style.color = ''
+            }
+        }
+
+        function limpar(){
+            iniciotxt.value = ''
+            fimtxt.value = ''
+            passotxt.value = 1
+            resultado.innerHTML = ''
+            resultado.style.color = ''
+        }
+    </script>
+</body>
+</html>
